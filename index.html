@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日三张塔罗 · 温柔的指引</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 首页 -->
+        <section id="home-screen" class="screen active">
+            <div class="content-wrapper">
+                <h1 class="main-title">今日三张塔罗</h1>
+                <p class="date-display" id="current-date"></p>
+                <p class="healing-quote">每一天都藏着温柔的讯息,等待你去聆听</p>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="start-btn">开始今日抽牌</button>
+                    <button class="btn btn-secondary" id="history-btn">回看过往记录</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 洗牌阶段 -->
+        <section id="shuffle-screen" class="screen">
+            <div class="content-wrapper">
+                <h2 class="section-title">正在洗牌...</h2>
+                <p class="section-subtitle">让宇宙的能量流动起来</p>
+                
+                <div class="shuffle-container">
+                    <div class="card-deck">
+                        <div class="card-back shuffle-card" style="--delay: 0"></div>
+                        <div class="card-back shuffle-card" style="--delay: 0.1s"></div>
+                        <div class="card-back shuffle-card" style="--delay: 0.2s"></div>
+                        <div class="card-back shuffle-card" style="--delay: 0.3s"></div>
+                        <div class="card-back shuffle-card" style="--delay: 0.4s"></div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="finish-shuffle-btn">完成洗牌</button>
+                    <button class="btn btn-ghost" id="skip-shuffle-btn">跳过</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 选牌阶段 -->
+        <section id="select-screen" class="screen">
+            <div class="content-wrapper">
+                <h2 class="section-title">选择你的三张牌</h2>
+                <p class="section-subtitle">跟随直觉,选择与你共鸣的牌</p>
+                
+                <div class="selection-counter">
+                    <span id="selection-count">已选 0/3</span>
+                </div>
+
+                <div class="cards-grid" id="cards-grid">
+                    <!-- 12张牌背将由JS生成 -->
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="confirm-selection-btn" disabled>确认翻牌</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 翻牌阶段 -->
+        <section id="reveal-screen" class="screen">
+            <div class="content-wrapper">
+                <h2 class="section-title">你的三张牌</h2>
+                <p class="section-subtitle">慢慢翻开,细细感受</p>
+                
+                <div class="reveal-cards-container" id="reveal-cards-container">
+                    <!-- 3张翻牌将由JS生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 解读阶段 -->
+        <section id="reading-screen" class="screen">
+            <div class="content-wrapper reading-content">
+                <h2 class="section-title">今日解读</h2>
+                <p class="section-subtitle" id="reading-date"></p>
+                
+                <div class="reading-cards" id="reading-cards">
+                    <!-- 解读内容将由JS生成 -->
+                </div>
+
+                <div class="reading-summary">
+                    <h3 class="summary-title">今日讯息</h3>
+                    <p class="summary-text" id="summary-text"></p>
+                </div>
+
+                <div class="daily-actions">
+                    <h3 class="actions-title">今日小行动</h3>
+                    <ul class="actions-list" id="actions-list">
+                        <!-- 建议将由JS生成 -->
+                    </ul>
+                </div>
+
+                <div class="daily-reminder">
+                    <p class="reminder-text" id="reminder-text"></p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="save-reading-btn">保存今日解读</button>
+                    <button class="btn btn-secondary" id="return-home-btn">明日再来</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 历史记录 -->
+        <section id="history-screen" class="screen">
+            <div class="content-wrapper">
+                <h2 class="section-title">过往记录</h2>
+                <p class="section-subtitle">回顾你走过的每一天</p>
+                
+                <div class="history-list" id="history-list">
+                    <!-- 历史记录将由JS生成 -->
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="back-from-history-btn">返回首页</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 已抽牌提示 -->
+        <div class="modal" id="already-drawn-modal">
+            <div class="modal-content">
+                <h3 class="modal-title">你今天已经抽过牌了</h3>
+                <p class="modal-text">今日的讯息已经为你准备好了</p>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" id="view-today-btn">查看今日解读</button>
+                    <button class="btn btn-ghost" id="redraw-btn">仅本次不保存重新抽</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 音效控制 -->
+        <button class="sound-toggle" id="sound-toggle" aria-label="音效开关">
+            <span class="sound-icon">🔇</span>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
